@@ -2,10 +2,22 @@ import mongoose from "mongoose"
 
 const taskSchema = mongoose.Schema(
   {
-    task: {
+    name: {
       type: String,
       required: true,
-    }
+    },
+    description: {
+      type: String,
+      required: false,
+    },
+    dateEnd: {
+      type: Date,
+      required: true,
+    },
+    dateStart: {
+      type: Date,
+      required: false,
+    },
   },
   {
     timestamps: true,

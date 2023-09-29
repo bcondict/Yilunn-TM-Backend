@@ -6,14 +6,20 @@ const router = express.Router()
 // Route for save a new Task
 router.post('/', async (request, response) => {
   try {
-    if (!request.body.task) {
+    if (
+        !request.body.name ||
+        !request.body.dateEnd
+      ) {
       return response.status(400).send({
         message: "Task name can not be empty"
       })
     }
 
     const newTask = {
-      task: request.body.task
+      name: request.body.name,
+      description: request.body.description,
+      dateEnd: request.body.dateEnd,
+      dateStart: request.body.dateStart,
     };
 
     const task = await Task.create(newTask);
